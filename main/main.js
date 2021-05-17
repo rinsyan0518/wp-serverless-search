@@ -5,15 +5,15 @@
 
 
 var wpServerlessSearch = (function () {
-  const searchFeed = location.origin + '/wp-content/uploads/wp-sls/search-feed.xml';
   const urlParams = window.location.search;
   const searchModalSelector = 'wp-sls-search-modal';
   const searchModalInput = '.wp-sls-search-field';
+  const searchFeed = searchParams.searchFeed;
   const searchForm = searchParams.searchForm;
   const searchFormInput = searchParams.searchFormInput;
 
   /**
-   * 
+   *
    * Sync search input with search modal
    */
   function syncSearchFields() {
@@ -23,7 +23,7 @@ var wpServerlessSearch = (function () {
   }
 
   /**
-   * 
+   *
    * Launch Search Modal
    */
   function launchSearchModal() {
@@ -31,7 +31,7 @@ var wpServerlessSearch = (function () {
   }
 
   /**
-   * 
+   *
    * @param {string} url - WordPress Post URL Pathname
    */
   function postUrl(url) {
@@ -41,7 +41,7 @@ var wpServerlessSearch = (function () {
   }
 
   /**
-   * 
+   *
    * Test for search query based on URL
    */
   function urlQuery() {
@@ -53,7 +53,7 @@ var wpServerlessSearch = (function () {
   }
 
   /**
-   * 
+   *
    * @param {string} query - Add query to search modal
    */
   function addQueryToSearchModal() {
@@ -68,7 +68,7 @@ var wpServerlessSearch = (function () {
   }
 
   /**
-   * 
+   *
    * @param {string} url - Parse search query paramaters from URL
    */
   function searchQueryParams(url = urlParams) {
@@ -86,7 +86,7 @@ var wpServerlessSearch = (function () {
   }
 
   /**
-   * 
+   *
    * Search submit
    */
 

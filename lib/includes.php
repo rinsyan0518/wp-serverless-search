@@ -8,6 +8,7 @@ add_action( 'admin_init', 'register_sls_search_ext_settings' );
 function register_sls_search_ext_settings() {
   register_setting( 'wp-sls-search-settings-group', 'wp_sls_search_form' );
   register_setting( 'wp-sls-search-settings-group', 'wp_sls_search_form_input' );
+  register_setting( 'wp-sls-search-settings-group', 'wp_sls_serach_media_cdn_unique_id' );
 }
 
 /**
@@ -37,6 +38,13 @@ function wp_sls_search_options() { ?>
               <td>
                 <p>Search input field to display results while typing.</p>
                 <input placeholder="input[type=search]" name="wp_sls_search_form_input" type="text" aria-describedby="serverless-search-target-class" value="<?php echo get_option( 'wp_sls_search_form_input' ); ?>" class="regular-text code">
+              </td>
+            </tr>
+            <tr valign="top">
+              <th scope="row">Unique ID:</th>
+              <td>
+                <p>MediaCDN </p>
+                <input placeholder="Unique ID..." name="wp_sls_serach_media_cdn_unique_id" type="text" aria-describedby="serverless-search-target-class" value="<?php echo get_option( 'wp_sls_serach_media_cdn_unique_id' ); ?>" class="regular-text code">
               </td>
             </tr>
           </table>

@@ -77,6 +77,7 @@ function wp_sls_search_default_options()
   $options = array(
     'wp_sls_search_form' => '[role=search]',
     'wp_sls_search_form_input' => 'input[type=search]',
+    'wp_sls_serach_media_cdn_unique_id' => ''
   );
 
   foreach ($options as $key => $value) {
@@ -118,9 +119,19 @@ function wp_sls_search_assets()
 
   $shifter_js = plugins_url('main/main.js', __FILE__);
 
+  $search_feed_path = '/wp-sls/search-feed.xml';
+  $upload_dir = wp_get_upload_dir();
+  $feed_url = $upload_dir['baseurl'] . $search_feed_path;
+
+  $media_cdn_unique_id = get_option('wp_sls_serach_media_cdn_unique_id');
+  if (!empty($media_cdn_unique_id)) {
+    $feed_url = 'https://cdn.getshifter.co/' . $media_cdn_unique_id . '/uploads' . $search_feed_path;
+  }
+
   $search_params = array(
     'searchForm' => get_option('wp_sls_search_form'),
-    'searchFormInput' => get_option('wp_sls_search_form_input')
+    'searchFormInput' => get_option('wp_sls_search_form_input'),
+    'searchFeed' => $feed_url
   );
 
   wp_register_script('wp-sls-search-js', $shifter_js, array('jquery', 'micromodal', 'fusejs'), null, true);
